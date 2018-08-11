@@ -31,7 +31,7 @@
         </tr>
       </thead>
 
-      <tbody id="sample1">
+      <tbody class ="sample1">
       </tbody>
     </table>
 
@@ -59,7 +59,7 @@
 <script>
 
     function arrayToTable(tableData) {
-        var table = $('<table  id="sample1"></table>');
+        var table = $('<table  class="sample1"></table>');
         $(tableData).each(function (i, rowData) {
             var row = $('<tr></tr>');
             $(rowData).each(function (j, cellData) {
@@ -74,11 +74,11 @@
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
-            $('#sample1').append(arrayToTable(Papa.parse(data).data));
+            $('.sample1').append(arrayToTable(Papa.parse(data).data));
         }
     }).done(function(){
 
-            $('#sample1').DataTable( {
+            $('.sample1').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'pageLength', 'csv', 'excel', 'pdf', 'print'
