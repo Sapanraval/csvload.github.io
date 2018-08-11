@@ -60,8 +60,6 @@
         success: function (data) {
             $('#sample1').append(arrayToTable(Papa.parse(data).data));
         }
-    }).done(function(){
-
             $('#sample1').DataTable( {
         dom: 'Bfrtip',
         buttons: [
