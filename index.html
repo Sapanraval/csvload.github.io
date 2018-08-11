@@ -61,7 +61,6 @@
         url: "data/Sample_Data.csv",
         datatype: "text",
         success: function (data) {
-            $('#account-portfolio').append(arrayToTable(Papa.parse(data).data));
             var account-portfolio = data.split(/\r?\n|\r/);
             var table_data = '<table class= "table table-bordered table-striped">';
             for(var count = 0; count<account-portfolio.length; count++){
