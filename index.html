@@ -58,7 +58,7 @@
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
-            $('#data-table').append(arrayToTable(Papa.parse(data).data));
+            $('#sample1').append(arrayToTable(Papa.parse(data).data));
         }
     }).done(function(){
 
