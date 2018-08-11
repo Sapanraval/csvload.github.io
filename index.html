@@ -17,64 +17,16 @@
 
   </header>
 
-<fieldset>
-    <label class="blocklabel">Select Account</label>
-    <select id="account" class="multiple-options" name="states[]" multiple="multiple">
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-    </select>
-
-      <label>
-      Select All</label>
-      <input type="checkbox" id="selectall">
-     
-
-
-    <label class="blocklabel">Select Portfolio</label>
-    <select id="portfolio" class="multiple-options" name="states[]" multiple="multiple">
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-      <option value="00100">00100</option>
-    </select>
-
-      <lable>
-      Select All
-     <input type="checkbox" id="selectall_2">
-     </lable>
-
-
-
-    <button id="button1"> Submit </button>
-
-    </fieldset>
-
+   
     <table id="sample1" class="example"  style="width:100%">
         
     </table>
 
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -88,19 +40,25 @@
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
 
-
-
-
-
 <script>
 
-    $(document).ready(function() {
-   
-   $.ajax({
+    function arrayToTable(tableData) {
+        var table = $('<table  id="sample1"></table>');
+        $(tableData).each(function (i, rowData) {
+            var row = $('<tr></tr>');
+            $(rowData).each(function (j, cellData) {
+                row.append($('<td>'+cellData+'</td>'));
+            });
+            table.append(row);
+        });
+        return table;
+    }
+
+    $.ajax({
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
-            $('#sample1').append(arrayToTable(Papa.parse(data).data));
+            $('#data-table').append(arrayToTable(Papa.parse(data).data));
         }
     }).done(function(){
 
@@ -117,6 +75,8 @@
 
     } );
 
+
+});
 </script>
 
 </body>
