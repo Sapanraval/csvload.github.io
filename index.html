@@ -94,19 +94,9 @@
 
 <script>
 
-    function arrayToTable(tableData) {
-        var table = $('<table  id="sample1"></table>');
-        $(tableData).each(function (i, rowData) {
-            var row = $('<tr></tr>');
-            $(rowData).each(function (j, cellData) {
-                row.append($('<td>'+cellData+'</td>'));
-            });
-            table.append(row);
-        });
-        return table;
-    }
-
-    $.ajax({
+    $(document).ready(function() {
+   
+   $.ajax({
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
