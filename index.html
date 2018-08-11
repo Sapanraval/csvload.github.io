@@ -17,12 +17,10 @@
 
   </header>
 
-    <div id="data-table">
+   
     <table id="sample1" class="example"  style="width:100%">
         
     </table>
-</div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -58,7 +56,7 @@
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
-            $('#data-table').append(arrayToTable(Papa.parse(data).data));
+            $('#sample1').append(arrayToTable(Papa.parse(data).data));
         }
     }).done(function(){
 

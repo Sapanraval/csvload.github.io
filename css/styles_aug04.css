@@ -134,7 +134,7 @@ form{
   text-align: left;
 }
 
-table.dataTable tbody tr {
+table.dataTable {
     background-color: #5381ac;
     color: #ccc;
     border-top: #ccc solid;
