@@ -17,8 +17,6 @@
 
   </header>
 
-   <table>
-
     <div id="sample1" class="example"  style="width:100%">
 
         
@@ -81,12 +79,8 @@
   } 
   table += '</tbody>';
   table += '</table>';
-  $('div').append(table);
-        }
-    }).done(function(){
 
-
-            $('#sample1').DataTable( {
+$('#sample1').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'pageLength', 'csv', 'excel', 'pdf', 'print'
