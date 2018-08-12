@@ -47,61 +47,67 @@ $(document).ready(function(){
     $.ajax({
         type: "GET",
         url: "data/Sample_Data.csv",
+
         success: function (data) {
-            var allRows = data.split(/\r?\n|\r/);
-  var table = '<table>';
-  for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
-    if (singleRow === 0) {
-      table += '<thead>';
-      table += '<tr>';
-    } else {
-      table += '<tr>';
-    }
-    var rowCells = allRows[singleRow].split(',');
-    for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
-      if (singleRow === 0) {
-        table += '<th>';
-        table += rowCells[rowCell];
-        table += '</th>';
-      } else {
-        table += '<td>';
-        table += rowCells[rowCell];
-        table += '</td>';
-      }
-    }
-    if (singleRow === 0) {
-      table += '</tr>';
-      table += '</thead>';
-      table += '<tbody>';
-    } else {
-      table += '</tr>';
-    }
-  } 
-  table += '</tbody>';
-  table += '</table>';
-  $('#sample1').append(DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'pageLength', 'csv', 'excel', 'pdf', 'print'
-        ],
+        var allRows = data.split(/\r?\n|\r/);
+        var table = '<table>';
 
-        lengthMenu: [
-            [ 10, 25, 50, -1 ],
-            [ '10 rows', '25 rows', '50 rows', '100 rows','Show all']
-        ],
+        for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+            if (singleRow === 0) {
+                table += '<thead>';
+                table += '<tr>';
+            } else {
+                table += '<tr>';
+            }
 
-        bSort: false,
-            aoColumns: [ { sWidth: "45%" }, { sWidth: "45%" }, { sWidth: "10%", bSearchable: false, bSortable: false } ],
-        "scrollY":        "200px",
-        "scrollCollapse": true,
-        "info":           true,
-        "paging":         true
+        
+            var rowCells = allRows[singleRow].split(',');
+            for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                if (singleRow === 0) {
+                    table += '<th>';
+                    table += rowCells[rowCell];
+                    table += '</th>';
+                } else {
+                    table += '<td>';
+                    table += rowCells[rowCell];
+                    table += '</td>';
+                }
 
-    }
+                 }
 
-    } );
+                 if (singleRow === 0) {
 
-} );
+                    table += '</tr>';
+                    table += '</thead>';
+                    table += '<tbody>';
+                } else {
+                    table += '</tr>';
+                }
+            } 
+
+            table += '</tbody>';
+            table += '</table>';
+
+            $('#sample1').append(DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                'pageLength', 'csv', 'excel', 'pdf', 'print'
+                ],
+                lengthMenu: [
+                [ 10, 25, 50, -1 ],
+                [ '10 rows', '25 rows', '50 rows', '100 rows','Show all']
+
+                ],
+                bSort: false,
+                aoColumns: [ { sWidth: "45%" }, { sWidth: "45%" }, { sWidth: "10%", bSearchable: false, bSortable: false } ],
+                "scrollY":        "200px",
+                "scrollCollapse": true,
+                "info":           true,
+                "paging":         true
+            }
+        });
+
+        });
 
 </script>
 
