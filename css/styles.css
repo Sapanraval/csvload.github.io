@@ -143,9 +143,10 @@ table.dataTable {
   text-align: left;
 }
 
-table.dataTable{
+table.dataTable tbody tr {
     background-color: #5381ac;
     color: #ccc;
     border-top: #ccc solid;
+    border-color: 
      }
      
