@@ -43,9 +43,7 @@
 
 
 <script>
-
-    $(document).ready(function() {
-
+$(document).ready(function(){
     $.ajax({
         type: "GET",
         url: "data/Sample_Data.csv",
@@ -81,8 +79,7 @@
   } 
   table += '</tbody>';
   table += '</table>';
-
-$('#sample1').DataTable( {
+  $('#sample1').append(DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'pageLength', 'csv', 'excel', 'pdf', 'print'
