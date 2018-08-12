@@ -92,6 +92,41 @@
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
 <script  src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
+<script>
+
+$(document).ready(function() {
+    $('.multiple-options').select2();
+
+    
+    $("#selectall").click(function(event){
+      
+      event.stopPropagation();
+
+
+    if($("#selectall").is(':checked') ){
+        $("#account > option").prop("selected","selected");
+        $("#account").trigger("change");
+    }else{
+        $("#account").val(null).trigger('change');  
+     }
+});
+
+    $("#selectall_2").click(function(event){
+      event.stopPropagation();
+    if($("#selectall_2").is(':checked') ){
+        $("#portfolio > option").prop("selected","selected");
+        $("#portfolio").trigger("change");
+    }else{
+        $("#portfolio").val(null).trigger('change');  
+     }
+});
+ 
+});
+  
+
+</script>
+
+
 
 <script>
     function arrayToTable(tableData) {
