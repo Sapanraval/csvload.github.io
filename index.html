@@ -43,24 +43,10 @@
 
 <script>
 
-
-function arrayToTable(tableData) {
-        var table = $('<table  id="sample1"></table>');
-        $(tableData).each(function (i, rowData) {
-            var row = $('<tr></tr>');
-            $(rowData).each(function (j, cellData) {
-                row.append($('<td>'+cellData+'</td>'));
-            });
-            table.append(row);
-        });
-        return table;
-    }
-
     $.ajax({
         type: "GET",
         url: "data/Sample_Data.csv",
         success: function (data) {
-            $('#sample1').append(arrayToTable(Papa.parse(data).data));
             var allRows = data.split(/\r?\n|\r/);
   var table = '<table>';
   for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
