@@ -139,7 +139,7 @@ $(document).ready(function() {
     }
     $.ajax({
         type: "GET",
-        url: "data/Sample_Data.csv",
+        url: "data/sample_data_full.csv",
         success: function (data) {
             $('#sample1').append(arrayToTable(Papa.parse(data).data));
         }
