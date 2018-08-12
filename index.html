@@ -17,17 +17,26 @@
 
   </header>
 
-   <div id="account-portfolio">
+   
+    <table id="sample1" class="example"  style="width:100%">
 
-</div>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+      </thead>
+        
+    </table>
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
@@ -44,53 +53,51 @@
 
 <script>
 
-    function arrayToTable(tableData) {
-        var table = $('<table  id="sample1"></table>');
-        $(tableData).each(function (i, rowData) {
-            var row = $('<tr></tr>');
-            $(rowData).each(function (j, cellData) {
-                row.append($('<td>'+cellData+'</td>'));
-            });
-            table.append(row);
-        });
-        return table;
+        $.ajax({
+        type: "GET"
+        url: 'data/sample_data.csv',
+        dataType: 'text',
+        suncess: function (data)
+        }).done(successFunction);
+
+        function successFunction(data) {
+  var allRows = data.split(/\r?\n|\r/);
+  var table = '<table>';
+  for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+    if (singleRow === 0) {
+      table += '<thead>';
+      table += '<tr>';
+    } else {
+      table += '<tr>';
     }
-
-    $.ajax({
-        type: "GET",
-        url: "data/Sample_Data.csv",
-        datatype: "text",
-        success: function (data) {
-            var account-portfolio = data.split(/\r?\n|\r/);
-            var table_data = '<table class= "table table-bordered table-striped">';
-            for(var count = 0; count<account-portfolio.length; count++){
-            var cell_data = account-portfolio[count].split(",");
-            table_data += '<tr>';
-            for(var cell_count=0; cell_count<cell_data.length; cell_count++){
-             if(count === 0){
-                table_data += '<th>'+cell_data[cell_count]+'</th>'; 
-            }
-            else
-
-            {
-
-                table_data += '<td>'+cell_data[cell_count]+'</td>';
-
-            }
-
-        }
-
-        table_data += '</tr>';
-
+    var rowCells = allRows[singleRow].split(',');
+    for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+      if (singleRow === 0) {
+        table += '<th>';
+        table += rowCells[rowCell];
+        table += '</th>';
+      } else {
+        table += '<td>';
+        table += rowCells[rowCell];
+        table += '</td>';
+      }
     }
+    if (singleRow === 0) {
+      table += '</tr>';
+      table += '</thead>';
+      table += '<tbody>';
+    } else {
+      table += '</tr>';
+    }
+  } 
+  table += '</tbody>';
+  table += '</table>';
+  $('body').append(table);
+}
 
-    table_data += '</table>';
 
-    $('#account-portfolio').html(table_data);
 
-        }
-
-    }).done(function(){
+            
 
             $('#sample1').DataTable( {
         dom: 'Bfrtip',
@@ -104,6 +111,7 @@
         ],
 
         bSort: false,
+            aoColumns: [ { sWidth: "45%" }, { sWidth: "45%" }, { sWidth: "10%", bSearchable: false, bSortable: false } ],
         "scrollY":        "200px",
         "scrollCollapse": true,
         "info":           true,
