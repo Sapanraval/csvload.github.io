@@ -20,16 +20,6 @@
    
     <table id="sample1" class="example"  style="width:100%">
 
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-        </tr>
-      </thead>
         
     </table>
 
@@ -53,6 +43,18 @@
 
 <script>
 
+
+function arrayToTable(tableData) {
+        var table = $('<table  id="sample1"></table>');
+        $(tableData).each(function (i, rowData) {
+            var row = $('<tr></tr>');
+            $(rowData).each(function (j, cellData) {
+                row.append($('<td>'+cellData+'</td>'));
+            });
+            table.append(row);
+        });
+        return table;
+    }
 
     $.ajax({
         type: "GET",
